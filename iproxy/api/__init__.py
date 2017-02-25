@@ -14,8 +14,10 @@ async def index(request):
 async def get_iproxy(request):
     cursor = db.ips.find()
     _ips = await cursor.to_list(length=100) # 100个ip, 可用IP: 5个
-    ips = _ips[0].get('ips')
-    ip = random.choice(ips)
+    ip = None
+    if _ips:
+        ips = _ips[0].get('ips')
+        ip = random.choice(ips)
     return web.json_response({'ip': ip})
 
 def ping_ip(ip=None):

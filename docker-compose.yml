@@ -12,7 +12,7 @@ celery:
     build: .
     env_file:
         - container.env
-    command: celery worker -A taskq.app --loglevel=INFO
+    command: celery worker -A taskq.tasks.app --loglevel=INFO
     links:
         - redis1
 
@@ -21,7 +21,7 @@ celery_beats:
     build: .
     env_file:
         - container.env
-    command: celery -A taskq.app beat --loglevel=INFO
+    command: celery -A taskq.tasks.app beat --loglevel=INFO
     links:
         - redis1
 
