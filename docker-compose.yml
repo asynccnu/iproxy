@@ -1,0 +1,8 @@
+# iproxy
+iproxy:
+    build: .
+    env_file:
+        - container.env
+    command: sh ssstart.sh
+    ports:
+        - "5666:8080"

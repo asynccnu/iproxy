@@ -1,4 +1,5 @@
 import os
+import random
 from aiohttp import web
 from aiohttp.web import Response
 from ..spider import cn_proxy_spider
@@ -14,7 +15,8 @@ async def get_iproxy(request):
     cursor = db.ips.find()
     _ips = await cursor.to_list(length=100) # 100个ip, 可用IP: 5个
     ips = _ips[0].get('ips')
-    return web.json_response({'ips': ips})
+    ip = random.choice(ips)
+    return web.json_response({'ip': ip})
 
 def ping_ip(ip=None):
     ping_cmd = 'ping -c 2 %s' % ip

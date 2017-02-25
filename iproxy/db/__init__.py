@@ -1,8 +1,9 @@
+import os
 import asyncio
 import motor.motor_asyncio
 
-HOST = 'localhost'
-PORT = 27017
+HOST = os.getenv('MONGO_HOST')
+PORT = int(os.getenv('MONGO_PORT'))
 
 async def setup_db():
     # { db:test, co:ips }
