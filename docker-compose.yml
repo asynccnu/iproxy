@@ -6,3 +6,28 @@ iproxy:
     command: sh ssstart.sh
     ports:
         - "5666:8080"
+
+# celery
+celery:
+    build: .
+    env_file:
+        - container.env
+    command: celery worker -A taskq.app --loglevel=INFO
+    links:
+        - redis1
+
+# celery beat
+celery_beats:
+    build: .
+    env_file:
+        - container.env
+    command: celery -A taskq.app beat --loglevel=INFO
+    links:
+        - redis1
+
+# redis servers
+redis1:
+    image: redis
+    command: redis-server --port 6388  # for celery
+    ports:
+        - "7388:6388"
