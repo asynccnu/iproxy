@@ -1,6 +1,6 @@
 # IPROXY
 
-> 爬虫代理池
+> 简单▄︻┻┳═一……爬虫代理池
 
 ## Environment Config
 
@@ -39,6 +39,13 @@ $ docker-compose build && docker-compose stop && docker-compose up -d
 $ docker-compose ps
 $ docker-compose logs <container>
 ```
+
+## Use
+
++ ```GET <root_path>/api/ip/````
+
+![screen shot 2017-02-25 at 23 07 10](https://cloud.githubusercontent.com/assets/10671733/23332126/39b20c60-fbaf-11e6-995b-51caeb979868.png)
+
 
 ## Proxy List
 
